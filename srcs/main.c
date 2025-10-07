@@ -3,7 +3,7 @@
 
 #define BUFFER_LEN 128
 
-int main(void) {
+int main() {
 	FILE *file = fopen("HelloWorld.tpap", "r");
 	size_t len;
 	char *buffer = (char*) malloc(BUFFER_LEN), *const more = (char*) malloc(BUFFER_LEN);
