@@ -98,6 +98,19 @@ int main(int argc, char **argv) {
  				more[j] = '\0';
 				printf("Number literal: %s\n", more);
 			} 
+			else if(buffer[i] == '"') {
+				i++;
+				while(buffer[i] != '"') {
+					if(buffer[i] == '\\') {
+						i++;
+					}
+					more[j] = buffer[i];
+					i++, j++;
+				}
+				i++;
+				more[j] = '\0';
+				printf("Word literal: %s\n", more);
+			}
 			else if(!( buffer[i] == ' ' || buffer[i] == '\t' || buffer[i] == '\n' || buffer[i] == '\r' )) {
 				if(buffer[i] == '/' && buffer[i+1] == '/') {
 					break;
@@ -109,10 +122,6 @@ int main(int argc, char **argv) {
 				if(t != NONE) {
 					printf("token: %u\n", t);
 				}
-				// else {
-					// putchar(buffer[i]);
-					// putchar('\n');
-				// }
 				i++;
 			}
 			else {
